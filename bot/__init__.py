@@ -492,3 +492,4 @@ except:
 updater = tg.Updater(token=BOT_TOKEN)
 bot = updater.bot
 dispatcher = updater.dispatcher
+botname = bot.username
