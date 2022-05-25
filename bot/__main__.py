@@ -11,7 +11,7 @@ from telegram.ext import CommandHandler
 from wserver import start_server_async
 from bot import bot, app, dispatcher, updater, botStartTime, IGNORE_PENDING_REQUESTS, TELEGRAPH_TITLE, IS_VPS, PORT, alive, web, OWNER_ID, AUTHORIZED_CHATS, telegraph_token
 from bot.helper.ext_utils import fs_utils
-helper.ext_utils.telegraph_helper import telegraph
+from helper.ext_utils.telegraph_helper import telegraph
 from bot.helper.telegram_helper.bot_commands import BotCommands
 from bot.helper.telegram_helper.message_utils import *
 from .helper.ext_utils.bot_utils import get_readable_file_size, get_readable_time
