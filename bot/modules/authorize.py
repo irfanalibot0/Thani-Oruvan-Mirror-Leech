@@ -43,7 +43,7 @@ def authorize(update, context):
         else:
             AUTHORIZED_CHATS.add(user_id)
             msg = 'User Authorized'
-    sendMessage(msg, context.bot, update.message)
+    sendMessage(msg, context.bot, update)
 
 def unauthorize(update, context):
     reply_message = None
@@ -82,7 +82,7 @@ def unauthorize(update, context):
             AUTHORIZED_CHATS.remove(user_id)
         else:
             msg = 'User Already Unauthorized!'
-    sendMessage(msg, context.bot, update.message)
+    sendMessage(msg, context.bot, update)
 
 def addSudo(update, context):
     reply_message = None
@@ -112,7 +112,7 @@ def addSudo(update, context):
         else:
             SUDO_USERS.add(user_id)
             msg = 'Promoted as Sudo'
-    sendMessage(msg, context.bot, update.message)
+    sendMessage(msg, context.bot, update)
 
 def removeSudo(update, context):
     reply_message = None
@@ -141,13 +141,13 @@ def removeSudo(update, context):
             SUDO_USERS.remove(user_id)
         else:
             msg = 'Not sudo user to demote!'
-    sendMessage(msg, context.bot, update.message)
+    sendMessage(msg, context.bot, update)
 
 def sendAuthChats(update, context):
     user = sudo = ''
     user += '\n'.join(f"<code>{uid}</code>" for uid in AUTHORIZED_CHATS)
     sudo += '\n'.join(f"<code>{uid}</code>" for uid in SUDO_USERS)
-    sendMessage(f'<b><u>Authorized Chats:</u></b>\n{user}\n<b><u>Sudo Users:</u></b>\n{sudo}', context.bot, update.message)
+    sendMessage(f'<b><u>Authorized Chats:</u></b>\n{user}\n<b><u>Sudo Users:</u></b>\n{sudo}', context.bot, update)
 
 
 send_auth_handler = CommandHandler(command=BotCommands.AuthorizedUsersCommand, callback=sendAuthChats,
