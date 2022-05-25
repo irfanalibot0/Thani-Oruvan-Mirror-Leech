@@ -567,7 +567,7 @@ class GoogleDriveHelper:
                     nxt_page += 1
             telegraph.edit_page(
                 path = self.path[prev_page],
-                title = TELEGRAPH_TITLE+" Search",
+                title = TELEGRAPH_TITLE+" Drive Search",
                 content=content
             )
         return
@@ -754,7 +754,7 @@ class GoogleDriveHelper:
         for content in self.telegraph_content:
             self.path.append(
                 telegraph.create_page(
-                    title=TELEGRAPH_TITLE+'Drive Search',
+                    title=TELEGRAPH_TITLE+' Drive Search',
                     content=content
                 )["path"]
             )
