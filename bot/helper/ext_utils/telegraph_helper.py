@@ -8,7 +8,7 @@ import logging
 from telegraph import Telegraph
 from telegraph.exceptions import RetryAfterError
 
-from bot import LOGGER
+from bot import LOGGER,TELEGRAPH_AUTHOR,TELEGRAPH_AUTH_URL
 
 
 class TelegraphHelper:
@@ -57,4 +57,4 @@ class TelegraphHelper:
 			return self.edit_page(path, title, content)
 
 
-telegraph=TelegraphHelper('Mirror-Leech-Telegram-Bot', 'https://github.com/anasty17/mirror-leech-telegram-bot')
+telegraph=TelegraphHelper(TELEGRAPH_AUTHOR, TELEGRAPH_AUTH_URL)
