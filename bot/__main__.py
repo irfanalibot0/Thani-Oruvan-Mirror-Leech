@@ -154,7 +154,7 @@ help_string_telegraph = f'''<br>
 <b>/{BotCommands.StatsCommand}</b>: Show Stats of the machine the bot is hosted on
 '''
 help = telegraph.create_page(
-        title='TELEGRAPH_TITLE',
+        title=TELEGRAPH_TITLE+" Help",
         content=help_string_telegraph,
     )["path"]
 
