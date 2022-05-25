@@ -22,7 +22,6 @@ def cloneNode(update, context):
     else:
         link = ''
     if is_gdtot_link(link):
-        if is_gdtot:
         try:
             msg = sendMessage(f"Processing: <code>{link}</code>", bot, message)
             link = gdtot(link)
