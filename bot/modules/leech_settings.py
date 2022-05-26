@@ -1,4 +1,3 @@
-
 import os
 import threading
 
@@ -94,13 +93,13 @@ def setThumb(update, context):
     reply_to = update.message.reply_to_message
     if reply_to is not None and reply_to.photo:
         path = "Thumbnails/"
-        if not ospath.isdir(path):
+        if not os.path.isdir(path):
             mkdir(path)
         photo_msg = app.get_messages(update.message.chat.id, reply_to_message_ids=update.message.message_id)
         photo_dir = app.download_media(photo_msg, file_name=path)
-        des_dir = ospath.join(path, str(user_id) + ".jpg")
+        des_dir = os.path.join(path, str(user_id) + ".jpg")
         Image.open(photo_dir).convert("RGB").save(des_dir, "JPEG")
-        osremove(photo_dir)
+        os.remove(photo_dir)
         if DB_URI is not None:
             DbManger().user_save_thumb(user_id, des_dir)
         msg = f"Custom thumbnail saved for {update.message.from_user.mention_html(update.message.from_user.first_name)}."
