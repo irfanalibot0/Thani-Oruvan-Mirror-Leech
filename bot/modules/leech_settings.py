@@ -94,7 +94,7 @@ def setThumb(update, context):
     if reply_to is not None and reply_to.photo:
         path = "Thumbnails/"
         if not os.path.isdir(path):
-            mkdir(path)
+            os.mkdir(path)
         photo_msg = app.get_messages(update.message.chat.id, reply_to_message_ids=update.message.message_id)
         photo_dir = app.download_media(photo_msg, file_name=path)
         des_dir = os.path.join(path, str(user_id) + ".jpg")
