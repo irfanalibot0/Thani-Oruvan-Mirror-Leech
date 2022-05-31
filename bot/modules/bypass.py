@@ -30,7 +30,7 @@ def rlb(update, context):
         msg = sendMessage(f"Processing: <code>{url}</code>", context.bot, update)
         new = rocklinks_bypass(url)
         deleteMessage(context.bot, msg)
-        sendMessage(f'Bypassed Links is : ', new, update, context.bot)
+        sendMessage(context.bot, update)
     else:
         deleteMessage(context.bot, msg)
         sendMessage('Send Rocklinks url along with command or by replying to the link by command', context.bot, update)
