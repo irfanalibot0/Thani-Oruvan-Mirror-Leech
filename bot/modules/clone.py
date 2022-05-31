@@ -26,12 +26,12 @@ def cloneNode(update, context):
         try:
             msg = sendMessage(f"Processing: <code>{link}</code>", context.bot, update)
             if "toonworld4all" in link:
-                site = requests.get(link)
-                new = site.link
-                t_code=new.split("token=", 1)[-1]
-                url = "https://rocklinks.net/"+t_code
+                zzz = requests.get(link)
+                yyy = zzz.url
+                t_code=yyy.split("token=", 1)[-1]
+                link = "https://rocklinks.net/"+t_code
             else:
-                link = url
+                link = link
             link = rocklinks_bypass(link)
             deleteMessage(context.bot, msg)
         except DirectDownloadLinkException as e:
