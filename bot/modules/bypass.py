@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 from bot.helper.telegram_helper.message_utils import sendMessage, deleteMessage
 from bot import dispatcher
 from telegram.ext import CommandHandler
-from bot.modules.clone import 
+from bot.modules.clone import is_gdrive_link,is_gdtot_link
 from bot.helper.telegram_helper.filters import CustomFilters
 from bot.helper.telegram_helper.bot_commands import BotCommands
 
