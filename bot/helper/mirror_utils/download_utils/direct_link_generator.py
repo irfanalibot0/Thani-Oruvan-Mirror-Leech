@@ -21,7 +21,7 @@ from base64 import standard_b64encode
 
 from bot import LOGGER, UPTOBOX_TOKEN, CRYPT
 from bot.helper.telegram_helper.bot_commands import BotCommands
-from bot.helper.ext_utils.bot_utils import is_gdtot_link
+from bot.helper.ext_utils.bot_utils import is_gdtot_link,is_temp_link
 from bot.helper.ext_utils.exceptions import DirectDownloadLinkException
 
 fmed_list = ['fembed.net', 'fembed.com', 'femax20.com', 'fcdn.stream', 'feurl.com', 'layarkacaxxi.icu',
@@ -70,6 +70,8 @@ def direct_link_generator(link: str):
         return krakenfiles(link)
     elif is_gdtot_link(link):
         return gdtot(link)
+    elif is_temp_link(link):
+        return rocklinks_bypass(link)
     elif any(x in link for x in fmed_list):
         return fembed(link)
     elif any(x in link for x in ['sbembed.com', 'watchsb.com', 'streamsb.net', 'sbplay.org']):
@@ -190,6 +192,31 @@ def github(url: str) -> str:
         return download.headers["location"]
     except KeyError:
         raise DirectDownloadLinkException("ERROR: Can't extract the link\n")
+
+def rocklinks_bypass(url: str) -> str:
+    client = cloudscraper.create_scraper(allow_brotli=False)
+    DOMAIN = "https://links.spidermods.in"
+    url = url[:-1] if url[-1] == '/' else url
+
+    code = url.split("/")[-1]
+    final_url = f"{DOMAIN}/{code}?quelle="
+
+    resp = client.get(final_url)
+    
+    soup = BeautifulSoup(resp.content, "html.parser")
+    try:
+        inputs = soup.find(id="go-link").find_all(name="input")
+    except:
+        return "Incorrect Link"
+    data = { input.get('name'): input.get('value') for input in inputs }
+
+    h = { "x-requested-with": "XMLHttpRequest" }
+    
+    time.sleep(6)
+    r = client.post(f"{DOMAIN}/links/go", data=data, headers=h)
+    try:
+        return r.json()['url']
+    except: return "Something went wrong :("
 
 def hxfile(url: str) -> str:
     """ Hxfile direct link generator
