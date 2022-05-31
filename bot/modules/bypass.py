@@ -25,14 +25,14 @@ def rlb(update, context):
         url = "https://rocklinks.net/"+t_code
     else:
         url = url
-    try:
+    if "rocklinks.net" in url
         msg = sendMessage(f"Processing: <code>{url}</code>", context.bot, update)
         new = rocklinks_bypass(url)
         deleteMessage(context.bot, msg)
         sendMessage(f'Bypassed Links is : ', new)
-    except DirectDownloadLinkException as e:
+    else:
         deleteMessage(context.bot, msg)
-        return sendMessage(str(e), context.bot, update))
+        sendMessage('Send Rocklinks url along with command or by replying to the link by command', context.bot, update)
 # ---------------------------------------------------------------------------------------------------------------------
 
 def rocklinks_bypass(url):
