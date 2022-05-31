@@ -11,14 +11,13 @@ for original authorship. """
 import requests
 import re
 import time
-import cloudscraper
 
 from base64 import b64decode
 from urllib.parse import urlparse, unquote
 from json import loads as jsnloads
 
 from lk21 import Bypass
-from cfscrape import create_scraper
+from cloudscraper import create_scraper
 from bs4 import BeautifulSoup
 from base64 import standard_b64encode
 
@@ -197,7 +196,7 @@ def github(url: str) -> str:
         raise DirectDownloadLinkException("ERROR: Can't extract the link\n")
 
 def rocklinks_bypass(url: str) -> str:
-    client = cloudscraper.create_scraper(allow_brotli=False)
+    client = create_scraper(allow_brotli=False)
     DOMAIN = "https://links.spidermods.in"
     url = url[:-1] if url[-1] == '/' else url
 
