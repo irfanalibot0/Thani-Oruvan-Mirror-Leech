@@ -17,6 +17,7 @@ def rlb(update, context):
     elif reply_to is not None:
         link = reply_to.text
     url = link
+
     if "toonworld4all" in url:
         site = requests.get(url)
         new = site.url
@@ -24,7 +25,8 @@ def rlb(update, context):
         url = "https://rocklinks.net/"+t_code
     else:
         url = url
-    if "rocklinks.net" in url
+
+    if "rocklinks.net" in url:
         msg = sendMessage(f"Processing: <code>{url}</code>", context.bot, update)
         new = rocklinks_bypass(url)
         deleteMessage(context.bot, msg)
