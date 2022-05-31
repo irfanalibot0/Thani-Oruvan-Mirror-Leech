@@ -8,7 +8,6 @@ from bot import dispatcher
 from telegram.ext import CommandHandler
 from bot.helper.telegram_helper.filters import CustomFilters
 from bot.helper.telegram_helper.bot_commands import BotCommands
-from bot.helper.ext_utils.exceptions import DirectDownloadLinkException
 
 def rlb(update, context):
     args = update.message.text.split(" ", maxsplit=1)
