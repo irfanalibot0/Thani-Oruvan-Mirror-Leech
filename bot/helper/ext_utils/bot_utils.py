@@ -232,7 +232,14 @@ def is_gdtot_link(url: str):
     return bool(url)
 
 def is_temp_link(url: str):
-    return "toonworld4all" or "rocklinks" in url
+    if "toonworld4all" in url:
+        site = requests.get(url)
+        new = site.url
+        t_code=new.split("token=", 1)[-1]
+        url = "https://rocklinks.net/"+t_code
+        return bool(url)
+    else:
+        return bool(url)
 
 def is_mega_link(url: str):
     return "mega.nz" in url or "mega.co.nz" in url
