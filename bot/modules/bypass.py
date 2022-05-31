@@ -3,7 +3,7 @@ import cloudscraper
 import requests
 from bs4 import BeautifulSoup
 
-from bot.helper.telegram_helper.message_utils import sendMessage, sendMarkup, deleteMessage, delete_all_messages, update_all_messages
+from bot.helper.telegram_helper.message_utils import sendMessage, deleteMessage
 from bot import dispatcher
 from bot.helper.telegram_helper.filters import CustomFilters
 from bot.helper.telegram_helper.bot_commands import BotCommands
