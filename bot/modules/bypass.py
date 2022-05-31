@@ -17,23 +17,26 @@ def rlb(update, context):
         link = args[1]
     elif reply_to is not None:
         link = reply_to.text
-    if "toonworld4all" in link:
-        site = requests.get(link)
-        new = site.link
+    url = link
+    if "toonworld4all" in url:
+        site = requests.get(url)
+        new = site.url
         t_code=new.split("token=", 1)[-1]
-        link = "https://rocklinks.net/"+t_code
+        url = "https://rocklinks.net/"+t_code
     else:
-        link
+        url = url
     try:
-        msg = sendMessage(f"Processing: <code>{link}</code>", context.bot, update)
-        link = rocklinks_bypass(link)
+        msg = sendMessage(f"Processing: <code>{url}</code>", context.bot, update)
+        update = rocklinks_bypass(url)
         deleteMessage(context.bot, msg)
+        sendMessage(f'Bypassed Links is : ', context.bot, update)
     except DirectDownloadLinkException as e:
         deleteMessage(context.bot, msg)
-        return sendMessage(str(e), context.bot, update)
+        return sendMessage(str(e), context.bot, update))
+   
 # ---------------------------------------------------------------------------------------------------------------------
 
-def rocklinks_bypass(link):
+def rocklinks_bypass(url):
     client = cloudscraper.create_scraper(allow_brotli=False)
     DOMAIN = "https://links.spidermods.in"
     link = link[:-1] if link[-1] == '/' else link
@@ -55,7 +58,7 @@ def rocklinks_bypass(link):
     time.sleep(6)
     r = client.post(f"{DOMAIN}/links/go", data=data, headers=h)
     try:
-        return r.json()['link']
+        return r.json()['url']
     except: return "Something went wrong :("
 
 rlb_handler = CommandHandler(BotCommands.RlbCommand, rlb, filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
