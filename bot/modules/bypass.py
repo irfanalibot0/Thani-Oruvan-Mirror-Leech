@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 from bot.helper.telegram_helper.message_utils import sendMessage, deleteMessage
 from bot import dispatcher
 from telegram.ext import CommandHandler
+from bot.modules.clone import 
 from bot.helper.telegram_helper.filters import CustomFilters
 from bot.helper.telegram_helper.bot_commands import BotCommands
 
@@ -28,9 +29,10 @@ def rlb(update, context):
 
     if "rocklinks.net" in url:
         msg = sendMessage(f"Processing: <code>{url}</code>", context.bot, update)
-        ghi = rocklinks_bypass(url)
+        link = rocklinks_bypass(url)
+        link = is_gdtot_link(link)
         deleteMessage(context.bot, msg)
-        sendMessage(f"{ghi}", context.bot, update)
+        link = is_gdrive_link(link)
     else:
         deleteMessage(context.bot, msg)
         sendMessage('Send Rocklinks url along with command or by replying to the link by command', context.bot, update)
