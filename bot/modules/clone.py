@@ -1,5 +1,6 @@
 import random
 import string
+import requests
 from telegram.ext import CommandHandler
 from bot.helper.mirror_utils.upload_utils import gdriveTools
 from bot.helper.telegram_helper.message_utils import sendMessage, sendMarkup, deleteMessage, delete_all_messages, update_all_messages, sendStatusMessage
@@ -24,6 +25,13 @@ def cloneNode(update, context):
     if is_temp_link(link):
         try:
             msg = sendMessage(f"Processing: <code>{link}</code>", context.bot, update)
+            if "toonworld4all" in link:
+                site = requests.get(link)
+                new = site.link
+                t_code=new.split("token=", 1)[-1]
+                url = "https://rocklinks.net/"+t_code
+            else:
+                link = url
             link = rocklinks_bypass(link)
             deleteMessage(context.bot, msg)
         except DirectDownloadLinkException as e:
