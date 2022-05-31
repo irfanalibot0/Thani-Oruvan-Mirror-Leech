@@ -19,6 +19,7 @@ class _BotCommands:
         self.StatsCommand = 'stats'
         self.HelpCommand = 'help'
         self.LogCommand = 'log'
+        self.RlbCommand = 'rlbypass'
         self.SpeedCommand = 'speedtest'
         self.CloneCommand = 'clone'
         self.CountCommand = 'count'
