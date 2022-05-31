@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 
 from bot.helper.telegram_helper.message_utils import sendMessage, deleteMessage
 from bot import dispatcher
+from telegram.ext import CommandHandler
 from bot.helper.telegram_helper.filters import CustomFilters
 from bot.helper.telegram_helper.bot_commands import BotCommands
 from bot.helper.ext_utils.exceptions import DirectDownloadLinkException
