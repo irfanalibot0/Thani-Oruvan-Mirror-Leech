@@ -10,10 +10,13 @@ for original authorship. """
 
 import requests
 import re
+import time
+import cloudscraper
 
 from base64 import b64decode
 from urllib.parse import urlparse, unquote
 from json import loads as jsnloads
+
 from lk21 import Bypass
 from cfscrape import create_scraper
 from bs4 import BeautifulSoup
