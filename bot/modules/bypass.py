@@ -39,9 +39,9 @@ def rlb(update, context):
 def rocklinks_bypass(url):
     client = cloudscraper.create_scraper(allow_brotli=False)
     DOMAIN = "https://links.spidermods.in"
-    link = link[:-1] if link[-1] == '/' else link
+    url = url[:-1] if url[-1] == '/' else url
 
-    code = link.split("/")[-1]
+    code = url.split("/")[-1]
     final_url = f"{DOMAIN}/{code}?quelle="
 
     resp = client.get(final_url)
