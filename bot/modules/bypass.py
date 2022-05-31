@@ -27,13 +27,12 @@ def rlb(update, context):
         url = url
     try:
         msg = sendMessage(f"Processing: <code>{url}</code>", context.bot, update)
-        update = rocklinks_bypass(url)
+        new = rocklinks_bypass(url)
         deleteMessage(context.bot, msg)
-        sendMessage(f'Bypassed Links is : ', context.bot, update)
+        sendMessage(f'Bypassed Links is : ', new)
     except DirectDownloadLinkException as e:
         deleteMessage(context.bot, msg)
         return sendMessage(str(e), context.bot, update))
-   
 # ---------------------------------------------------------------------------------------------------------------------
 
 def rocklinks_bypass(url):
