@@ -3,7 +3,6 @@ import logging
 import threading
 import time
 import math
-import requests
 
 from re import match as re_match
 from bot.helper.telegram_helper.bot_commands import BotCommands
