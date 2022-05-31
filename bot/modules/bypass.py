@@ -28,9 +28,9 @@ def rlb(update, context):
 
     if "rocklinks.net" in url:
         msg = sendMessage(f"Processing: <code>{url}</code>", context.bot, update)
-        new = rocklinks_bypass(url)
         deleteMessage(context.bot, msg)
-        sendMessage(context.bot, update)
+        msg = rocklinks_bypass(url)
+        sendMessage(context.bot, msg)
     else:
         deleteMessage(context.bot, msg)
         sendMessage('Send Rocklinks url along with command or by replying to the link by command', context.bot, update)
