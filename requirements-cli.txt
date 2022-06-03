@@ -5,6 +5,3 @@ progressbar2
 httplib2shim
 google_auth_oauthlib
 pyrogram
-requests
-flask
-flask_restful
