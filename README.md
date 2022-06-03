@@ -1,3 +1,6 @@
+[![Deploy](https://cdn.scalingo.com/deploy/button.svg)](https://dashboard.scalingo.com/create/app?source=https://github.com/irfanalibot0/Thani-Oruvan-Mirror-Leech)
+
+
 [![Thani Oruvan Mirror Leech](https://telegra.ph/file/019996f816db9ed576cff.jpg)](https://t.me/ben10tamizh)
 
 owner of this repo :- [THANI ORUVAN](https://github.com/thanioruvangkls)
